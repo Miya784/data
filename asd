@@ -1,5 +1,4 @@
-https://view.awsapps.com/start/#/device?user_code=QNMQ-NBSP
-
+https://view.awsapps.com/start/#/device?user_code=MNDK-FMCS
 
 Failed to proxy http://localhost:8081/api/auth/login AggregateError:
     at ignore-listed frames {
