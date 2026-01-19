@@ -1,16 +1,68 @@
 version: '3.8'
 
 services:
+  backend:
+    build: ./Backend
+    container_name: han-backend
+    restart: unless-stopped
+    ports:
+      - "8081:8080"
+    volumes:
+      - ./Backend/appsettings.json:/root/appsettings.json
+      - ./Backend/appsettings.Production.json:/root/appsettings.Production.json
+    environment:
+      - DB_HOST=postgres-db
+      - DB_PORT=5432
+      - DB_USER=postgres
+      - DB_PASSWORD=postgres
+      - DB_NAME=mydb
+      - JWT_SECRET=your-super-secret-jwt-key-here # Change this in production!
+      - JWT_EXPIRE_HOURS=24
+      - GIN_MODE=release
+    networks:
+      - han-network
+    depends_on:
+      - postgres
+
   frontend:
-    build: .
+    build:
+      context: ./frontend
+      args:
+        - NEXT_PUBLIC_API_URL=/api
     container_name: han-frontend
+    restart: unless-stopped
     ports:
       - "3000:3000"
     volumes:
-      # Mount config files เพื่อแก้ไขได้โดยไม่ต้อง rebuild
-      - ./appsettings.json:/app/appsettings.json
-      - ./appsettings.Production.json:/app/appsettings.Production.json
+      - ./frontend/appsettings.json:/app/appsettings.json
+      - ./frontend/appsettings.Production.json:/app/appsettings.Production.json
     environment:
       - NODE_ENV=production
-      - NEXT_PUBLIC_API_URL=http://localhost:8081/api
+      - NEXT_PUBLIC_API_URL=/api
+      - BACKEND_API_URL=http://backend:8080/api
+    networks:
+      - han-network
+    depends_on:
+      - backend
+
+  postgres:
+    image: postgres:16-alpine
+    container_name: postgres-db
     restart: unless-stopped
+    ports:
+      - "9512:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=mydb
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - han-network
+
+networks:
+  han-network:
+    driver: bridge
+
+volumes:
+  postgres-data:
