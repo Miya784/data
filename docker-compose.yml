@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  frontend:
+    build: .
+    container_name: han-frontend
+    ports:
+      - "3000:3000"
+    volumes:
+      # Mount config files เพื่อแก้ไขได้โดยไม่ต้อง rebuild
+      - ./appsettings.json:/app/appsettings.json
+      - ./appsettings.Production.json:/app/appsettings.Production.json
+    environment:
+      - NODE_ENV=production
+      - NEXT_PUBLIC_API_URL=http://localhost:8081/api
+    restart: unless-stopped
