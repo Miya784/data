@@ -14,3 +14,6 @@ docker run -d `
   -v "${PWD}/frontend/appsettings.json:/app/appsettings.json" `
   -e BACKEND_API_URL=http://backend:8080/api `
   han-frontend
+
+
+curl -fsSL https://cli.kiro.dev/install | bash
