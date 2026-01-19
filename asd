@@ -1,3 +1,6 @@
+$10$B9UcVIbKF6noWhfY6Zn8oO3jzXKxEribvhji5pNmSDg6AfKLjldvW
+
+
 https://view.awsapps.com/start/#/device?user_code=MNDK-FMCS
 
 Failed to proxy http://localhost:8081/api/auth/login AggregateError:
