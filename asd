@@ -1,3 +1,6 @@
+https://view.awsapps.com/start/#/device?user_code=QNMQ-NBSP
+
+
 Failed to proxy http://localhost:8081/api/auth/login AggregateError:
     at ignore-listed frames {
   code: 'ECONNREFUSED'
