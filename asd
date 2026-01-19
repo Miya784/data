@@ -17,3 +17,9 @@ docker run -d `
 
 
 curl -fsSL https://cli.kiro.dev/install | bash
+
+
+
+Open this URL in your local browser:
+  https://app.kiro.dev/signin?state=TIcZ6pHOCS&code_challenge=I5VLw8pNG7IMnBPl7wFIcnRpVS-OC_Ybwr3Io1Ot4LI&code_challenge_method=S256&redirect_uri=http%3A%2F%2Flocalhost%3A49153&redirect_from=kirocli
+
