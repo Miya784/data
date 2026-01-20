@@ -49,3 +49,8 @@ const nextConfig = {
 module.exports = nextConfig;
 
 docker run -d   --name go-server   --add-host=host.docker.internal:host-gateway   -p 8081:8081  -e DB_HOST=host.docker.internal   -e DB_PORT=9512   -e DB_USER=dashboardsql   -e DB_PASSWORD=ps-dashboardsql   -e DB_NAME=dashboardsql   -e DB_SSLMODE=disable   -e JWT_SECRET=your-super-secret-jwt-key-here   -e JWT_EXPIRE_HOURS=24   -e SERVER_PORT=8081   -e GIN_MODE=debug   9burhan/b-han-csa:v8
+
+
+
+NO.	Requester	Category	System Application	Location	Response	Assignee	Priority	Impact	Code	Task	Start Date	Tentative Date	Finish Date	Verify/Consult	Status	Remark	Created At
+CSA-20260120-001	burhan	Support	Estimate Cost	Huawei	Support	burhan	medium	No Impact		Estimate Cost เธชเธณเธซเธฃเธฑเธเธเธฒเธฃ POC Project Database Pipeline เธ—เธตเน Zone Non-Production	20 เธก.เธ. 2569 07:00	20 เธก.เธ. 2569 07:00	20 เธก.เธ. 2569 07:00		Completed		20 เธก.เธ. 2569 10:05
